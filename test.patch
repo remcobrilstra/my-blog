@@ -1,0 +1,22 @@
+--- a/src/frontend/src/app/blog/[slug]/page.tsx
++++ b/src/frontend/src/app/blog/[slug]/page.tsx
+@@ -1,5 +1,6 @@
+ 'use client'
+ import { getMarkdownContent, getMarkdownMetaData } from '@/lib/markdown';
++import { motion } from 'framer-motion';
+ import BlogPost from '@/components/blog/blog-post';
+ 
+ export async function generateMetadata({ params }) {
+@@ -53,7 +54,11 @@
+      })
+      .slice(0, 2); // Get top 2 related posts
+ 
+-  return <BlogPost post={post} relatedPosts={relatedPosts} />;
++  return (
++    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
++        <BlogPost post={post} relatedPosts={relatedPosts} />
++    </motion.div>
++);
+ }
+ 
+ export default BlogPostPage;
