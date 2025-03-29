@@ -43,7 +43,7 @@ const RootLayout = ({ children }: { children: any }) => {
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
             <Link href="/" className="text-2xl font-bold">
-              Your Name
+              Remco Brilstra
             </Link>
             
             <NavigationMenu>
@@ -95,7 +95,7 @@ const RootLayout = ({ children }: { children: any }) => {
       <footer className="border-t">
         <div className="container mx-auto px-4 py-6">
           <div className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Your Name. All rights reserved.
+            © {new Date().getFullYear()} Remco Brilstra. All rights reserved.
           </div>
         </div>
       </footer>

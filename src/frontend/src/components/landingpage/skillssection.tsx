@@ -270,7 +270,7 @@ const SkillsSection = () => {
             className="gap-2"
             asChild
           >
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/remcobrilstra" target="_blank" rel="noopener noreferrer">
               <Github className="h-5 w-5" />
               GitHub
             </a>
@@ -284,7 +284,7 @@ const SkillsSection = () => {
             className="gap-2"
             asChild
           >
-            <a href="https://x.com/yourusername" target="_blank" rel="noopener noreferrer">
+            <a href="https://x.com/remcobrilstra" target="_blank" rel="noopener noreferrer">
               <X className="h-5 w-5" />
               X.com
             </a>
@@ -298,7 +298,7 @@ const SkillsSection = () => {
             className="gap-2"
             asChild
           >
-            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+            <a href="https://linkedin.com/in/remcobrilstra" target="_blank" rel="noopener noreferrer">
               <Linkedin className="h-5 w-5" />
               LinkedIn
             </a>

@@ -1,12 +1,8 @@
+"use client"
 import React from 'react';
-import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
-  Calendar,
-  Clock,
-  Tag,
-  ArrowUpRight,
-  Book,
   Github,
   ExternalLink
 } from 'lucide-react';
@@ -30,9 +26,30 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 }
 };
 
+interface Project {
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  github?: string;
+  demo?: string;
+  tags?: string[];
+  featured?: boolean;
+  date: string;
+}
+
+interface ProjectsListProps {
+  projects: Project[];
+}
 
 // Projects Components
-export const ProjectsList = ({ projects }) => {
+export const ProjectsList: React.FC<ProjectsListProps> = ({ projects }) => {
+  const [imageError, setImageError] = React.useState<Record<string, boolean>>({});
+
+  const handleImageError = (slug: string) => {
+    setImageError(prev => ({ ...prev, [slug]: true }));
+  };
+
   return (
     <motion.div 
       className="space-y-8"
@@ -43,7 +60,7 @@ export const ProjectsList = ({ projects }) => {
       <div className="space-y-4">
         <h1 className="text-4xl font-bold">Projects</h1>
         <p className="text-muted-foreground">
-          A showcase of my technical projects and professional work.
+          Some projects i work on every now and then.
         </p>
       </div>
 
@@ -51,12 +68,19 @@ export const ProjectsList = ({ projects }) => {
         {projects.map((project) => (
           <motion.div key={project.slug} variants={itemVariants}>
             <Card className="h-full hover:shadow-lg transition-shadow">
-              <div className="w-full h-48 overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
+              <div className="w-full h-48 overflow-hidden relative">
+                {!imageError[project.slug] ? (
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                    onError={() => handleImageError(project.slug)}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gray-100 flex items-center justify-center">
+                    <span className="text-gray-400">No image available</span>
+                  </div>
+                )}
               </div>
               <CardHeader>
                 <CardTitle>{project.title}</CardTitle>
